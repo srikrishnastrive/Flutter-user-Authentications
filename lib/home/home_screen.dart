@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_project/Login/login.dart';
-import 'package:firebase_project/services/authentication.dart';
+
+import 'package:firebase_project/services/google_authentication.dart';
 import 'package:firebase_project/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
               'Congratulations\n you have successfullly Login',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            Text("${FirebaseAuth.instance.currentUser!.email}"),
+            Text("${FirebaseAuth.instance.currentUser!.displayName}"),
             MyButton(
                 onTap: () async {
-                  await AuthServices().signOut();
+                  await FirebaseServices().googleSignOut();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

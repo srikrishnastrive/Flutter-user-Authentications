@@ -91,6 +91,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           showSnackBar(context, error.toString());
                         });
                         Navigator.pop(context);
+                        emailController.clear();
                       },
                       child: const Text(
                         "Send",
